@@ -1,0 +1,232 @@
+ 
+
+
+
+# Creating a table
+ CREATE TABLE Teacher
+ (
+    ID int,
+    Name varchar(15);
+
+ )
+
+# Add value a table
+ INSERT INTO Teacher (ID,Name)
+ VAlUES (101,'Anis Islam');
+
+
+# Deleteing table
+ DROP TABLE Teacher;
+
+
+
+# Constraint
+  (
+    ID int NOT NULL UNIQE AUTO INCREMENT,
+    Name varchar(15) NOT NULL,
+    Name varchar(15),
+    Sallery double (10,2),
+    PRIMARY KEY(ID);
+
+ )
+
+
+# Updateing value
+ UPDATE Teacher
+ SET Sallery=Sallery+50
+ WHERE Sallery<400000;
+
+
+# Delete statment
+ DELETE FROM Teacher
+ WHERE ID=1005
+
+ 
+
+
+
+
+# Remove dublicate value by useing D keyords
+ SELECT DISTINCT City
+ FROM student_details
+ WHERE gender='Male'
+
+# ascending by name and only show name in the table
+ SELECT Name
+ from student_details
+ ORDER BY name
+
+# ascending by name and show name,age,gender in the table
+ SELECT Name,age,gender
+ from student_details
+ ORDER BY name
+
+# descending by name and show name,Roll,GPA in the table
+ SELECT Roll,Name,GPA
+ FROM student_details
+ORDER BY Name DESC;
+
+
+#Arithmatic operator show the result
+ SELECT 5+2
+
+# Relational operator 
+ SELECT Roll,Name,GPA
+ FROM student_details
+ WHERE Roll BETWEEN 102 AND 105;
+
+
+# logical operator 
+ SELECT *
+ FROM student_details
+ WHERE City='Sapahar' and (GPA>3.50 or Roll>102);
+
+ SELECT *
+ FROM student_details
+ WHERE City IN (Sapahar,rajshahi,Dhaka);
+
+ SELECT *
+ FROM student_details
+ WHERE City NOT IN (Sapahar,rajshahi,Dhaka);
+ 
+ SELECT *
+ FROM student_details
+ WHERE City LIKE '%s%';
+  
+ SELECT *
+ FROM student_details
+ WHERE City LIKE '_a%';
+
+
+
+# Where, Find Record
+ SELECT GPA
+ FROM student_details
+ WHERE Name='Maruf';
+
+ SELECT *
+ FROM student_details
+ WHERE Age>17
+ ORDER BY Name DESC;
+
+
+# AS keyword useing syestem
+ SELECT Roll AS Id,Name As 'First Name'
+ FROM student_details;
+
+
+# Uper funtion and lower funtion
+ SELECT UPPER('my name is maruf');
+ SELECT LOWER('I AM MARUF HASAN');
+
+ SELECT UPPER(City) AS City_New Name
+ from student_details;
+
+ SELECT CONCAT('Welcome to ','Database');        #SUM
+ 
+ SELECT CONCAT(Name,'is',Age,'years old') AS Student
+ FROM student_details;
+
+ SELECT GREATEST(10,30,50,30,60);
+ SELECT LEAST(10,30,50,30,-60);
+ SELECT POW(2,3);
+ SELECT TURNCATE(35.67877,2);
+ SELECT TURNCATE(LOG(2),2);
+ SELECT RAND();
+
+
+
+
+# Group funtion
+ SELECT COUNT(*),MAX(Sallery),min(Sallery),SUM(Sallery),AVG(Sallery)
+ FROM Teacher;
+
+ SELECT MAX(Sallery),AVG(Sallery)
+ FROM Teacher
+
+ SELECT MAX(GPA)
+ FROM student_details;
+
+ SELECT min(GPA)
+ FROM student_details;
+
+ SELECT AVG(GPA)
+ FROM student_details;
+
+
+# Query
+ SELECT *
+ FROM Teacher
+ WHERE Sallery> (SELECT AVG(Sallery) FROM Teacher);
+
+
+# ALTER keywords useing adding new column
+ ALTER TABLE Teacher
+ ADD Age int(5)
+
+ ALTER TABLE Teacher                 # Rename column
+ CHANGE Age Present Age varchar(20);
+
+ ALTER TABLE Teacher                  # Delete column
+ DROP COLUMNs Age,Sallery;
+
+
+# Group by clause
+ SELECT department,sum(Sallery)
+ from Teacher
+ GROUP BY department
+ ORDER BY sum(Sallery) ;
+
+
+# Turncate table command Table record Delete
+ TRUNCATE TABLE student_details;
+
+
+#Joining Table 
+ SELECT student_details.Roll,Reg_number,Name,gender,group_name,GPA
+ FROM details,student_details
+ WHERE student_details.Roll=details.Roll;
+
+
+#Joining Table JOIN clause
+ SELECT d1.Roll,d2.Reg_number,d1.Name,d1.gender,d2.group_name,d2.GPA
+ FROM details as d2, JOIN student_details as d1
+ ON student_details.Roll=details.Roll;
+
+#inner Joining Table   #common row er data rakhe
+ SELECT d1.Roll,d2.Reg_number,d1.Name,d1.gender,d2.group_name,d2.GPA  
+ FROM details as d2,INNER JOIN student_details as d1
+ ON student_details.Roll=details.Roll;
+
+
+#left Joining Table   # bam paser row er sob data rakhe
+ SELECT d1.Roll,d2.Reg_number,d1.Name,d1.gender,d2.group_name,d2.GPA
+ FROM details as d2,LEFT JOIN student_details as d1
+ ON student_details.Roll=details.Roll;
+
+#right Joining Table    # dan paser row er sob data rakhe
+ SELECT d1.Roll,d2.Reg_number,d1.Name,d1.gender,d2.group_name,d2.GPA
+ FROM details as d2,RIGHT JOIN student_details as d1
+ ON student_details.Roll=details.Roll;
+
+# UNION 
+SELECT Roll,name,gender
+from sylhet_tour
+
+UNION / UNION ALL
+
+SELECT roll,name,gender
+from Dhaka_tour;
+
+# Vew table
+
+CREATE VEW student_details AS
+ SELECT Roll,Name,gender
+ from student_details;
+
+ 
+ 
+
+ 
+ 
+ 
